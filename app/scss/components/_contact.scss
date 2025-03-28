@@ -1,7 +1,10 @@
 @use '../util' as u;
 
 .contact {
-  position: relative;
+  // position: relative;
+  // overflow: visible;
+  padding-block: 4rem;
+
   &__wrapper-success {
     display: grid;
     gap: 8px;
@@ -10,16 +13,17 @@
     border-radius: 12px;
 
     width: min(100% - u.rem(48));
-    max-width: 400px;
+    max-width: 498px;
     height: 131px;
 
-    position: fixed;
+    position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
 
     @include u.breakpoint(medium) {
-      width: 498px;
+      top: -60px;
     }
   }
 
@@ -38,7 +42,9 @@
     background-color: var(--clr-white);
     border-radius: 16px;
     box-shadow: 0 8px 24px var(--clr-box-shadow);
-    height: auto;
+
+    // new adjustment
+    position: relative;
   }
 
   &__form {

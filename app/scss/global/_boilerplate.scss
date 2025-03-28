@@ -14,10 +14,9 @@ body {
   font-weight: 400;
   background: var(--clr-green-200);
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+
+  display: grid;
+  place-content: center;
 }
 
 .visually-hidden {
@@ -32,8 +31,4 @@ body {
 fieldset {
   border: none;
   outline: none;
-}
-
-footer {
-  margin-top: 3rem;
 }
