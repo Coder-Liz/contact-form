@@ -1,0 +1,39 @@
+@use '../util' as u;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Karla', Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  background: var(--clr-green-200);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.visually-hidden {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+fieldset {
+  border: none;
+  outline: none;
+}
+
+footer {
+  margin-top: 3rem;
+}

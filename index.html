@@ -4,81 +4,164 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Frontend Mentor | Contact form</title>
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./img/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="/dist/style.css" />
+    <script src="/app/js/script.js"></script>
+
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
   </head>
   <body>
     <main>
       <section class="contact">
+        <div class="wrapper contact__wrapper-success">
+          <div class="contact__span-wrapper">
+            <img src="/img/icon-success-check.svg" alt="" />
+            <span>Message Sent!</span>
+          </div>
+          <p>Thanks for completing the form. We'll be in touch soon</p>
+        </div>
         <div class="wrapper contact__wrapper">
           <h1>Contact Us</h1>
-          <form id="contact-form">
-            <fieldset>
+          <form id="contact-form" class="contact__form">
+            <fieldset class="contact__fieldset">
               <legend class="visually-hidden">Name & Email</legend>
-              <div class="contact__control">
-                <label for="first_name" class="contact__required-field"
-                  >First Name</label
-                >
-                <input type="text" id="first_name" required />
+              <div class="contact__name-input">
+                <div class="contact__form-group">
+                  <label for="first_name" class="contact__required-field"
+                    >First Name</label
+                  >
+                  <input
+                    type="text"
+                    id="first_name"
+                    class="contact__input-field"
+                    required
+                  />
+                  <span class="contact__error hidden"
+                    >This field is required</span
+                  >
+                </div>
+                <div class="contact__form-group">
+                  <label for="last_name" class="contact__required-field"
+                    >Last Name</label
+                  >
+                  <input
+                    type="text"
+                    id="last_name"
+                    class="contact__input-field"
+                    required
+                  />
+                  <span class="contact__error hidden"
+                    >This field is required</span
+                  >
+                </div>
               </div>
-              <div class="contact__control">
-                <label for="last_name" class="contact__required-field"
-                  >Last Name</label
-                >
-                <input type="text" id="last_name" required />
-              </div>
-              <div class="contact__control">
+              <div class="contact__form-group">
                 <label for="email_address" class="contact__required-field"
                   >Email Address</label
                 >
-                <input type="email" id="email_address" required />
+                <input
+                  type="email"
+                  id="email_address"
+                  class="contact__input-field"
+                  required
+                />
+                <span class="contact__error hidden"
+                  >Please enter a valid email address</span
+                >
+                <span class="contact__error hidden"
+                  >This field is required</span
+                >
               </div>
             </fieldset>
-            <fieldset>
-              <legend class="contact__required-field">Query Type</legend>
-              <div class="contact__control">
-                <label for="general_enquiry"
-                  ><input
+            <fieldset class="contact__fieldset">
+              <legend class="contact__required-field query-type">
+                Query Type
+              </legend>
+              <div class="contact__form-group radio">
+                <label for="general_enquiry" class="contact__label">
+                  <input
+                    class="contact__query-type-input"
                     type="radio"
                     name="query_type"
                     id="general_enquiry"
                     value="general"
-                  />General Enquiry</label
-                >
-              </div>
-              <div class="contact__control">
-                <label for="support_request"
-                  ><input
+                  />
+                  General Enquiry
+                </label>
+
+                <label for="support_request" class="contact__label">
+                  <input
+                    class="contact__query-type-input"
                     type="radio"
                     name="query_type"
                     id="support_request"
                     value="support"
-                  />Support Request</label
-                >
+                  />
+                  Support Request
+                </label>
               </div>
+              <span class="contact__error">Please select a query type</span>
             </fieldset>
-            <fieldset>
+            <fieldset class="contact__fieldset message">
               <legend class="visually-hidden">Message</legend>
-              <div class="contact__control">
+              <div class="contact__form-group">
                 <label for="message" class="contact__required-field"
                   >Message</label
                 >
-                <textarea name="message" id="message"></textarea>
+                <textarea
+                  name="message"
+                  id="message"
+                  class="contact__textarea"
+                  rows="2"
+                  cols="30"
+                ></textarea>
+                <span class="contact__error">This field is required</span>
               </div>
             </fieldset>
-            <fieldset>
+            <fieldset class="contact__fieldset consent">
               <legend class="visually-hidden">Consent</legend>
-              <div class="contact__control">
-                <label for="consent"
-                  ><input type="checkbox" />I consent to being contacted by the
-                  team</label
+              <div class="contact__form-group">
+                <label for="consent" class="contact__label-consent"
+                  ><input type="checkbox" class="contact__input-consent" />I
+                  consent to being contacted by the team</label
+                >
+                <span class="contact__error"
+                  >To submit this form, please consent to being contacted</span
                 >
               </div>
             </fieldset>
             <!-- Submit Button -->
 
-            <input type="submit" id="submit" value="Submit" />
+            <input
+              type="submit"
+              id="submit"
+              value="Submit"
+              class="contact__submit-btn"
+            />
           </form>
         </div>
       </section>
     </main>
+    <footer>
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a
+        >. Coded by <a href="#">Your Name Here</a>.
+      </div>
+    </footer>
   </body>
 </html>
