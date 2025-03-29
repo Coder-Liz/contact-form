@@ -1,9 +1,7 @@
 @use '../util' as u;
 
 .contact {
-  // position: relative;
-  // overflow: visible;
-  padding-block: 4rem;
+  padding-block: 2rem;
 
   &__wrapper-success {
     display: grid;
@@ -21,9 +19,19 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
+    transition: opacity 0.5s ease, visibility 0.5s ease, transform 0.5s ease;
+
+    opacity: 1;
+    visibility: visible;
 
     @include u.breakpoint(medium) {
       top: -60px;
+    }
+
+    &.hidden {
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(-400px);
     }
   }
 
@@ -93,6 +101,10 @@
       @include u.breakpoint(medium) {
         grid-template-columns: repeat(2, 1fr);
       }
+    }
+
+    &.radio-selected {
+      border-color: var(--clr-green-600);
     }
   }
 
@@ -164,18 +176,25 @@
     margin-bottom: 16px;
   }
 
-  &__fieldset {
-    &.message,
-    &.consent {
-      margin-bottom: 16px;
-    }
+  &__fieldset.message,
+  &__fieldset.consent {
+    margin-bottom: 16px;
   }
 
   &__error {
     font: inherit;
     font-size: 1rem;
     color: var(--clr-red);
-    display: none;
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+
+    &.hidden {
+      display: none;
+      opacity: 0;
+      visibility: hidden;
+    }
   }
 
   &__input-consent {
@@ -196,10 +215,20 @@
     width: 100%;
     padding: 16px 40px;
     border-radius: 8px;
-    transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out, transform 0.1s ease;
 
     &:hover {
       background-color: var(--clr-btn-hover);
     }
+
+    &:active {
+      transform: scale(0.98);
+      background-color: var(--clr-btn-hover);
+    }
+  }
+
+  .error-border {
+    border: 1px solid var(--clr-red);
+    background: var(--clr-red-light);
   }
 }

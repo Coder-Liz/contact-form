@@ -12,7 +12,7 @@
       href="./img/favicon-32x32.png"
     />
     <link rel="stylesheet" href="/dist/style.css" />
-    <script src="/app/js/script.js"></script>
+    <script defer src="/app/js/script.js"></script>
 
     <style>
       .attribution {
@@ -30,7 +30,7 @@
         <div class="wrapper contact__wrapper">
           <h1>Contact Us</h1>
           <!-- Success Message inside form wrapper -->
-          <div class="contact__wrapper-success">
+          <div class="contact__wrapper-success message hidden">
             <div class="contact__span-wrapper">
               <img src="/img/icon-success-check.svg" alt="" />
               <span>Message Sent!</span>
@@ -80,10 +80,11 @@
                   class="contact__input-field"
                   required
                 />
-                <span class="contact__error hidden"
+
+                <span class="contact__error valid hidden"
                   >Please enter a valid email address</span
                 >
-                <span class="contact__error hidden"
+                <span class="contact__error empty hidden"
                   >This field is required</span
                 >
               </div>
@@ -92,7 +93,7 @@
               <legend class="contact__required-field query-type">
                 Query Type
               </legend>
-              <div class="contact__form-group radio">
+              <div class="contact__form-group radio" data-type="radio">
                 <label for="general_enquiry" class="contact__label">
                   <input
                     class="contact__query-type-input"
@@ -115,7 +116,9 @@
                   Support Request
                 </label>
               </div>
-              <span class="contact__error">Please select a query type</span>
+              <span class="contact__error hidden"
+                >Please select a query type</span
+              >
             </fieldset>
             <fieldset class="contact__fieldset message">
               <legend class="visually-hidden">Message</legend>
@@ -129,30 +132,37 @@
                   class="contact__textarea"
                   rows="2"
                   cols="30"
+                  required
                 ></textarea>
-                <span class="contact__error">This field is required</span>
+                <span class="contact__error hidden"
+                  >This field is required</span
+                >
               </div>
             </fieldset>
             <fieldset class="contact__fieldset consent">
               <legend class="visually-hidden">Consent</legend>
               <div class="contact__form-group">
                 <label for="consent" class="contact__label-consent"
-                  ><input type="checkbox" class="contact__input-consent" />I
-                  consent to being contacted by the team</label
+                  ><input
+                    type="checkbox"
+                    id="consent"
+                    class="contact__input-consent"
+                  />I consent to being contacted by the team</label
                 >
-                <span class="contact__error"
+                <span class="contact__error hidden"
                   >To submit this form, please consent to being contacted</span
                 >
               </div>
             </fieldset>
             <!-- Submit Button -->
-
-            <input
-              type="submit"
-              id="submit"
-              value="Submit"
-              class="contact__submit-btn"
-            />
+            <div class="contact__btn-wrapper">
+              <input
+                type="submit"
+                id="submit"
+                value="Submit"
+                class="contact__submit-btn"
+              />
+            </div>
           </form>
         </div>
       </section>
