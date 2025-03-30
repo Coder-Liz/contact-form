@@ -3,31 +3,37 @@ const formGroups = document.querySelectorAll('.contact__form-group');
 const radioDivs = document.querySelectorAll('.radio');
 const successMessage = document.querySelector('.contact__wrapper-success');
 
+// Ensure the form does not use native browser validation
 formElement.setAttribute('novalidate', '');
 
 // Helper function to toggle radio button background styling
 const changeRadioBg = () => {
-  radioDivs.forEach((radioDiv) => {
-    const radio = radioDiv.querySelector('input');
-    radioDiv.classList.toggle('radio-selected', radio.checked);
+  const radioGroups = document.querySelectorAll(
+    '.contact__form-group[data-type="radio"]'
+  );
+
+  radioGroups.forEach((group) => {
+    const radios = group.querySelectorAll('.radio');
+    radios.forEach((radioDiv) => {
+      const radio = radioDiv.querySelector('input');
+      radioDiv.classList.toggle('radio-selected', radio.checked);
+    });
   });
 };
 
-// Display error messages by removing `.hidden`
+// Display error messages by removing `.hidden` class
 const displayError = (formGroup, errorSelector) => {
   const errorMessage = formGroup.querySelector(errorSelector);
   if (errorMessage) {
     errorMessage.classList.remove('hidden');
-    errorMessage.style.display = 'block';
   }
 };
 
-// Hide error messages by adding `.hidden`
+// Hide error messages by adding `.hidden` class
 const removeError = (formGroup) => {
   const errorMessages = formGroup.querySelectorAll('.contact__error');
   errorMessages.forEach((error) => {
     error.classList.add('hidden');
-    error.style.display = 'none';
   });
 };
 
@@ -100,30 +106,25 @@ const validateRadioGroups = () => {
   const radioGroups = document.querySelectorAll(
     '.contact__form-group[data-type="radio"]'
   );
-  console.log('validateRadioGroups called');
 
   radioGroups.forEach((radioGroup) => {
     const radios = radioGroup.querySelectorAll("input[type='radio']");
     const isChecked = Array.from(radios).some((radio) => radio.checked);
 
     if (!isChecked) {
-      console.log('Radio group is invalid');
       // Find the error message which is a sibling of the form group
       const errorElement =
         radioGroup.parentElement.querySelector('.contact__error');
       if (errorElement) {
         errorElement.classList.remove('hidden');
-        errorElement.style.display = 'block';
       }
       allRadiosValid = false;
     } else {
-      console.log('Radio group is valid');
       // Find the error message and hide it
       const errorElement =
         radioGroup.parentElement.querySelector('.contact__error');
       if (errorElement && !errorElement.classList.contains('hidden')) {
         errorElement.classList.add('hidden');
-        errorElement.style.display = 'none';
       }
     }
   });
@@ -135,11 +136,12 @@ const validateRadioGroups = () => {
 const displayMessage = () => {
   if (successMessage) {
     successMessage.classList.remove('hidden');
-    successMessage.style.display = 'block';
 
     setTimeout(() => {
-      successMessage.classList.add('hidden');
-      successMessage.style.display = 'none';
+      // Only hide the message if it hasn't been manually dismissed
+      if (!successMessage.classList.contains('hidden')) {
+        successMessage.classList.add('hidden');
+      }
     }, 4000);
   }
 };
@@ -155,14 +157,15 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Handle radio button selection and background color change
-radioDivs.forEach((radioDiv) => {
-  radioDiv.addEventListener('click', () => {
-    const radioInput = radioDiv.querySelector('input');
-    if (radioInput) {
-      radioInput.checked = true;
-      changeRadioBg();
-      removeError(radioDiv.closest('.contact__form-group'));
-    }
+const radioInputs = document.querySelectorAll(
+  'input[type="radio"][name="queryType"]'
+);
+
+radioInputs.forEach((radio) => {
+  radio.addEventListener('change', () => {
+    changeRadioBg();
+    const formGroup = radio.closest('.contact__form-group');
+    removeError(formGroup);
   });
 });
 
@@ -186,7 +189,11 @@ formElement.addEventListener('submit', (event) => {
     displayMessage();
     localStorage.setItem('showSuccessMessage', 'true');
     console.log('Form submitted successfully (client-side validation)');
-    formElement.submit();
+
+    // Uncomment below for server-side submission via AJAX/fetch API
+    // fetch('/submit-form', { method: 'POST', body: new FormData(formElement)})
+
+    formElement.submit(); // Default submission behavior
   }
 });
 
@@ -209,6 +216,5 @@ formGroups.forEach((formGroup) => {
 if (successMessage) {
   successMessage.addEventListener('click', () => {
     successMessage.classList.add('hidden');
-    successMessage.style.display = 'none';
   });
 }

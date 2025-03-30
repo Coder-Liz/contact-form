@@ -37,7 +37,7 @@
             </div>
             <p>Thanks for completing the form. We'll be in touch soon</p>
           </div>
-          <form id="contact-form" class="contact__form" action="" novalidate="">
+          <form id="contact-form" class="contact__form">
             <fieldset class="contact__fieldset">
               <legend class="visually-hidden">Name & Email</legend>
               <div class="contact__name-input">
@@ -48,6 +48,7 @@
                   <input
                     type="text"
                     id="first_name"
+                    name="first_name"
                     class="contact__input-field"
                     required
                   />
@@ -62,6 +63,7 @@
                   <input
                     type="text"
                     id="last_name"
+                    name="last_name"
                     class="contact__input-field"
                     required
                   />
@@ -77,6 +79,7 @@
                 <input
                   type="email"
                   id="email_address"
+                  name="email"
                   class="contact__input-field"
                   required
                 />
@@ -98,7 +101,7 @@
                   <input
                     class="contact__query-type-input"
                     type="radio"
-                    name="query_type"
+                    name="queryType"
                     id="general_enquiry"
                     value="general"
                   />
@@ -109,7 +112,7 @@
                   <input
                     class="contact__query-type-input"
                     type="radio"
-                    name="query_type"
+                    name="queryType"
                     id="support_request"
                     value="support"
                   />
@@ -146,6 +149,7 @@
                   ><input
                     type="checkbox"
                     id="consent"
+                    name="consent"
                     class="contact__input-consent"
                   />I consent to being contacted by the team</label
                 >
