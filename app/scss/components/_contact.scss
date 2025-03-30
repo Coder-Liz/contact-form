@@ -127,19 +127,10 @@
     }
 
     &:focus,
-    &:focus-visible,
+    &:focus-within,
     &:active {
       border-color: var(--clr-green-600);
       background: var(--clr-green-200);
-    }
-  }
-
-  &__input-field,
-  &__textarea {
-    &:focus,
-    &:focus-visible,
-    &:active {
-      background: #d4edda;
     }
   }
 
