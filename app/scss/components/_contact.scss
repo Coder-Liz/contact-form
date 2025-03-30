@@ -134,6 +134,15 @@
     }
   }
 
+  &__input-field,
+  &__textarea {
+    &:focus,
+    &:focus-visible,
+    &:active {
+      background: #d4edda;
+    }
+  }
+
   &__label {
     font-family: 'Karla', Arial, Helvetica, sans-serif;
     font-size: 1.125rem;
