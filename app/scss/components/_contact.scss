@@ -4,15 +4,12 @@
   padding-block: 2rem;
 
   &__wrapper-success {
-    display: grid;
-    gap: 8px;
     padding: 24px;
     background-color: var(--clr-grey-900);
     border-radius: 12px;
 
     width: min(100% - u.rem(48));
     max-width: 498px;
-    height: 131px;
 
     position: absolute;
     top: 0;
@@ -40,6 +37,7 @@
     align-items: center;
     justify-content: flex-start;
     gap: 8px;
+    margin-bottom: 12px;
   }
 
   &__wrapper {
@@ -51,7 +49,6 @@
     border-radius: 16px;
     box-shadow: 0 8px 24px var(--clr-box-shadow);
 
-    // new adjustment
     position: relative;
   }
 

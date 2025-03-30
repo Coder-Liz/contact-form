@@ -17,8 +17,8 @@ const changeRadioBg = () => {
 const displayError = (formGroup, errorSelector) => {
   const errorMessage = formGroup.querySelector(errorSelector);
   if (errorMessage) {
-    errorMessage.classList.remove('hidden'); // Ensure it shows
-    errorMessage.style.display = 'block'; // Fallback for visibility
+    errorMessage.classList.remove('hidden');
+    errorMessage.style.display = 'block';
   }
 };
 
@@ -26,8 +26,8 @@ const displayError = (formGroup, errorSelector) => {
 const removeError = (formGroup) => {
   const errorMessages = formGroup.querySelectorAll('.contact__error');
   errorMessages.forEach((error) => {
-    error.classList.add('hidden'); // Hide the error
-    error.style.display = 'none'; // Fallback for visibility
+    error.classList.add('hidden');
+    error.style.display = 'none';
   });
 };
 
@@ -185,7 +185,6 @@ formElement.addEventListener('submit', (event) => {
   if (formValid) {
     displayMessage();
     localStorage.setItem('showSuccessMessage', 'true');
-
     console.log('Form submitted successfully (client-side validation)');
     formElement.submit();
   }
