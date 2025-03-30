@@ -37,7 +37,7 @@
     visibility: visible;
 
     @include u.breakpoint(medium) {
-      top: -60px;
+      top: -30px;
     }
 
     &.hidden {
