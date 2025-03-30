@@ -3,13 +3,28 @@
 .contact {
   padding-block: 2rem;
 
+  &__wrapper {
+    width: min(100% - u.rem(32));
+    display: grid;
+    gap: 32px;
+    padding: clamp(1.5rem, 0.46rem + 4.43vw, 2.5rem);
+    background-color: var(--clr-white);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px var(--clr-box-shadow);
+
+    position: relative;
+
+    @include u.breakpoint(medium) {
+      max-width: 736px;
+    }
+  }
+
   &__wrapper-success {
+    width: 327px;
+    max-width: 498px;
     padding: 24px;
     background-color: var(--clr-grey-900);
     border-radius: 12px;
-
-    width: min(100% - u.rem(48));
-    max-width: 498px;
 
     position: absolute;
     top: 0;
@@ -38,18 +53,6 @@
     justify-content: flex-start;
     gap: 8px;
     margin-bottom: 12px;
-  }
-
-  &__wrapper {
-    width: min(100% - u.rem(32), u.rem(736));
-    display: grid;
-    gap: 32px;
-    padding: clamp(1.5rem, 0.46rem + 4.43vw, 2.5rem);
-    background-color: var(--clr-white);
-    border-radius: 16px;
-    box-shadow: 0 8px 24px var(--clr-box-shadow);
-
-    position: relative;
   }
 
   &__form {
